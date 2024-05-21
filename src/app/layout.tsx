@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
 import { ThemeProvider } from "@/core/providers/ThemeProvider";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const Navbar = dynamic(() => import("@/core/components/layouts/Navbar"));
 const inter = Inter({ subsets: ["latin"] });
@@ -29,6 +31,8 @@ export default function RootLayout({
             </div>
           </div>
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
