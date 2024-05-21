@@ -1,6 +1,8 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
-import Code from "./Code";
 import { createHeadingAnchor } from "@/core/functions/createHeadingAnchor";
+import { Code } from 'bright';
+
+Code.theme = "dracula-soft";
 
 interface Props {
   source: string;
@@ -18,7 +20,7 @@ export default function MDX({ source, ...props }: Props) {
         h4: createHeadingAnchor("h4"),
         h5: createHeadingAnchor("h5"),
         h6: createHeadingAnchor("h6"),
-        code: Code,
+        pre: Code,
       }}
     />
   );
