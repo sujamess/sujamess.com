@@ -1,6 +1,6 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { createHeadingAnchor } from "@/core/functions/createHeadingAnchor";
-import { Code } from 'bright';
+import { Code } from "bright";
 
 Code.theme = "dracula-soft";
 
