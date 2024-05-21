@@ -4,6 +4,7 @@ import "./globals.css";
 import dynamic from "next/dynamic";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeProvider } from "@/core/providers/ThemeProvider";
 
 const Navbar = dynamic(() => import("@/core/components/layouts/Navbar"));
 const inter = Inter({ subsets: ["latin"] });
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="cupcake">
       <body className={`${inter.className} overflow-y-auto no-scrollbar`}>
-        <div className="w-full min-h-screen flex justify-center bg-base-100">
+        <ThemeProvider>
           <div className="max-w-7xl w-full flex justify-center">
             <div className="flex flex-col gap-y-8 w-full h-full">
               <Navbar />
@@ -29,7 +30,7 @@ export default function RootLayout({
               </main>
             </div>
           </div>
-        </div>
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>
