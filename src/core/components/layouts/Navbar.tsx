@@ -39,9 +39,9 @@ export default function Navbar() {
             <li>
               <Link href="/projects">Projects</Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/contact">Contact</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
         <Link className="btn btn-ghost text-xl" href="/">
@@ -62,9 +62,9 @@ export default function Navbar() {
           <li>
             <Link href="/projects">Projects</Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/contact">Contact</Link>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className="navbar-end">
