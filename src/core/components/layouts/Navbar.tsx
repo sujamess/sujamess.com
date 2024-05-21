@@ -4,7 +4,7 @@ import WebRing from "./WebRing";
 
 export default function Navbar() {
   return (
-    <div className="navbar bg-base-100 h-16 max-w-7xl">
+    <div className="navbar bg-base-100 h-16 w-full">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
