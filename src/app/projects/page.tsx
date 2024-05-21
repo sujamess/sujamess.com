@@ -2,7 +2,9 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 
 const GitHubIcon = dynamic(() => import("@/core/components/Icon/GitHub"));
-const GlobeAltIcon = dynamic(() => import('@heroicons/react/24/outline/GlobeAltIcon'));
+const GlobeAltIcon = dynamic(
+  () => import("@heroicons/react/24/outline/GlobeAltIcon"),
+);
 
 export default function Projects() {
   const projects = {

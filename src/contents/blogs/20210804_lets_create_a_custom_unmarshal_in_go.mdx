@@ -3,6 +3,7 @@ title: "ทำ Custom Unmarshal ใน Go กันเถอะ!"
 publishedAt: "2021-08-04"
 description: "มาลองทำ Custom Unmarshal ใน Go กัน~"
 ---
+
 ## Custom Unmarshal คืออะไร? ทำไปเพื่ออะไร?
 
 Custom Unmarshal คือ การที่เรา Implement ตัว JSON Unmarshal ของ Field นั้น ๆ เอง โดยจุดประสงค์โดยทั่วไป คือ เราอยากจะ Unmarshal แหละ แต่ว่าอยากจะเปลี่ยน Type ของบาง Field ไปเป็นอีก Type นึง
@@ -10,21 +11,25 @@ Custom Unmarshal คือ การที่เรา Implement ตัว JSON 
 ยกตัวอย่างง่าย ๆ เช่น เรามี struct ของ Blog ที่มี Field ชื่อว่า Tags โดยเก็บ string เช่น "Golang, Custom Unmarshal, JSON" ไว้ แต่เราอยากได้มันเป็น []string{"Golang", "Custom Unmarshal", "JSON"} อะไรทำนองนี้
 
 สมมุติว่าเรามี json ที่หน้าตาประมาณนี้
-``` json
+
+```json
 {
   "thumbnailUrl": "https://assets.sujames.com/blogs/511a21c4-c923-42fd-996a-10c7ca114f77",
   "title": "ทำ Custom Unmarshal ใน Go กันเถอะ!",
   "tags": "Golang, Custom Unmarshal, JSON"
 }
 ```
+
 เขียน struct ได้ราว ๆ นี้
-``` golang
+
+```golang
 type Blog struct {
 	ThumbnailURL string `json:"thumnailURL"`
 	Title        string `json:"title"`
 	Tags         string `json:"tags"`
 }
 ```
+
 สมมุติเราอยากให้ Tags เป็น []string ไม่ใช่ string เราก็ต้องสร้างอีก struct มา (สมมุติชื่อ Blog2) แล้วทำการ unmarshal JSON to Blog -> marshal Blog -> Unmarshal Blog to Blog2
 
 ซึ่ง Solutions แบบนึกไว ๆ บ้าน ๆ ก็คงมี
@@ -37,12 +42,14 @@ type Blog struct {
 ### แบบที่ 1: สร้าง type ใหม่ แล้วก็ Implement UnmarshalJSON เข้าไป
 
 ก่อนอื่นสร้าง type ใหม่ที่เราต้องการ เพื่อที่จะทำการ Implement UnmarshalJSON ได้
-``` golang
+
+```golang
 type Tags []string
 ```
 
 แล้วก็ประกาศใน Struct ของ Blog ได้เลย
-``` golang
+
+```golang
 type Blog1 struct {
 	ThumbnailURL string `json:"thumbnailUrl"`
 	Title        string `json:"title"`
@@ -53,7 +60,8 @@ type Tags []string
 ```
 
 จากนั้นทำการ Implement UnmarshalJSON ให้ type Tag ของเรา
-``` golang
+
+```golang
 func (t *Tags) UnmarshalJSON(data []byte) error {
 	var tags string
 
@@ -71,7 +79,8 @@ func (t *Tags) UnmarshalJSON(data []byte) error {
 ### แบบที่ 2: Implement UnmarshalJSON เข้าไปบน struct ที่เราต้องการเลย
 
 สร้าง struct ใหม่ที่เราต้องการ
-``` golang
+
+```golang
 type Blog2 struct {
 	ThumbnailURL string   `json:"thumbnailUrl"`
 	Title        string   `json:"title"`
@@ -80,7 +89,8 @@ type Blog2 struct {
 ```
 
 แล้วก็ Implement เล้ย
-``` golang
+
+```golang
 func (b *Blog2) UnmarshalJSON(data []byte) error {
 	type blog struct {
 		ThumbnailURL string `json:"thumbnailUrl"`
@@ -104,7 +114,8 @@ func (b *Blog2) UnmarshalJSON(data []byte) error {
 ```
 
 ทีนี้พอเรา Unmarshal ตัว Blog Request ก็จะได้ Field Tags เป็น []string แล้ว!
-``` golang
+
+```golang
 func main() {
 	blogJSON := `{
         "thumbnailUrl": "https://assets.sujames.com/blogs/511a21c4-c923-42fd-996a-10c7ca114f77",
@@ -155,6 +166,7 @@ func unmarshalBlog2(blogJSON []byte) error {
 ```
 
 ผลลัพธ์
+
 ```
 [blog1]: at index 0: Golang
 [blog1]: at index 1: Custom Unmarshal
