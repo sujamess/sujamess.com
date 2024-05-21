@@ -22,7 +22,7 @@ Custom Unmarshal คือ การที่เรา Implement ตัว JSON 
 
 เขียน struct ได้ราว ๆ นี้
 
-```golang
+```go
 type Blog struct {
 	ThumbnailURL string `json:"thumnailURL"`
 	Title        string `json:"title"`
@@ -43,13 +43,13 @@ type Blog struct {
 
 ก่อนอื่นสร้าง type ใหม่ที่เราต้องการ เพื่อที่จะทำการ Implement UnmarshalJSON ได้
 
-```golang
+```go
 type Tags []string
 ```
 
 แล้วก็ประกาศใน Struct ของ Blog ได้เลย
 
-```golang
+```go
 type Blog1 struct {
 	ThumbnailURL string `json:"thumbnailUrl"`
 	Title        string `json:"title"`
@@ -61,7 +61,7 @@ type Tags []string
 
 จากนั้นทำการ Implement UnmarshalJSON ให้ type Tag ของเรา
 
-```golang
+```go
 func (t *Tags) UnmarshalJSON(data []byte) error {
 	var tags string
 
@@ -80,7 +80,7 @@ func (t *Tags) UnmarshalJSON(data []byte) error {
 
 สร้าง struct ใหม่ที่เราต้องการ
 
-```golang
+```go
 type Blog2 struct {
 	ThumbnailURL string   `json:"thumbnailUrl"`
 	Title        string   `json:"title"`
@@ -90,7 +90,7 @@ type Blog2 struct {
 
 แล้วก็ Implement เล้ย
 
-```golang
+```go
 func (b *Blog2) UnmarshalJSON(data []byte) error {
 	type blog struct {
 		ThumbnailURL string `json:"thumbnailUrl"`
@@ -115,7 +115,7 @@ func (b *Blog2) UnmarshalJSON(data []byte) error {
 
 ทีนี้พอเรา Unmarshal ตัว Blog Request ก็จะได้ Field Tags เป็น []string แล้ว!
 
-```golang
+```go
 func main() {
 	blogJSON := `{
         "thumbnailUrl": "https://assets.sujames.com/blogs/511a21c4-c923-42fd-996a-10c7ca114f77",
