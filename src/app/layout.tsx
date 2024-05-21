@@ -19,8 +19,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className}`}>
+    <html lang="en" data-theme="cupcake">
+      <body className={`${inter.className} overflow-y-auto no-scrollbar`}>
         <ThemeProvider>
           <div className="max-w-7xl w-full flex justify-center">
             <div className="flex flex-col gap-y-8 w-full h-full">
