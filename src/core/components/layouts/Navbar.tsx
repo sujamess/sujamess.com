@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ThemeSwitcher from "./ThemeSwitcher";
+// import ThemeSwitcher from "./ThemeSwitcher";
 import WebRing from "./WebRing";
 
 export default function Navbar() {
@@ -44,7 +44,7 @@ export default function Navbar() {
             </li> */}
           </ul>
         </div>
-        <Link className="btn btn-ghost text-xl" href="/">
+        <Link className="text-xl" href="/">
           sujamess
         </Link>
       </div>
@@ -69,7 +69,7 @@ export default function Navbar() {
       </div>
       <div className="navbar-end">
         <div className="flex gap-x-4">
-          <ThemeSwitcher />
+          {/* <ThemeSwitcher /> */}
           <WebRing />
         </div>
       </div>
