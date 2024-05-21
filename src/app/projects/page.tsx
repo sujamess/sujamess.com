@@ -1,7 +1,9 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
-const GitHubIcon = dynamic(() => import("@/core/components/Icon/GitHub"));
+const GitHubIcon = dynamic(
+  () => import("@/core/components/Icon/GitHub/ServerComponent"),
+);
 const GlobeAltIcon = dynamic(
   () => import("@heroicons/react/24/outline/GlobeAltIcon"),
 );
@@ -35,7 +37,7 @@ export default function Projects() {
         },
         description:
           "Convert number to words (EN, TH) in Golang with support more range of numbers.",
-        githubURL: "https://github.com/SyntaxCrew/poker-web",
+        githubURL: "https://github.com/sujamess/numconword",
       },
     ],
     archived: [
@@ -125,7 +127,7 @@ export default function Projects() {
                     {archivedProject.title.org}
                   </span>
                   <span className="align-text-top h-full">/</span>
-                  <span className="font-light break-normal align-text-top h-full align-text-top">
+                  <span className="font-light break-normal align-text-top h-full">
                     {archivedProject.title.repo}
                   </span>
                 </p>
