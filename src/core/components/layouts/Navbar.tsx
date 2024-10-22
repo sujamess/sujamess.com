@@ -6,18 +6,16 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
-  DropdownMenuSeparator,
-  DropdownMenuLabel,
   DropdownMenuItem,
 } from "@/core/components/ui/DropdownMenu";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
 export default function Navbar() {
   return (
-    <div className="px-4 md:px-0 self-center grid grid-cols-2 lg:grid-cols-3 w-full h-16 items-center">
+    <div className="px-4 lg:px-0 self-center grid grid-cols-2 md:grid-cols-3 w-full h-16 items-center">
       {/* Logo */}
       <div className="flex gap-x-2">
-        <div className="lg:hidden">
+        <div className="md:hidden">
           <DropdownMenu>
             <DropdownMenuTrigger>
               <HamburgerMenuIcon />
@@ -42,7 +40,7 @@ export default function Navbar() {
         <div>sujamess</div>
       </div>
       {/* Menus */}
-      <div className="hidden lg:flex lg:space-x-4">
+      <div className="hidden md:flex lg:space-x-4">
         <Button variant="ghost" asChild>
           <Link href="/">Home</Link>
         </Button>
