@@ -10,6 +10,7 @@ export const getMDXData = (dir: string) => {
       metadata,
       slug,
       content,
+      tags: metadata.tags.split(", "),
     };
   });
 };
