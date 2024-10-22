@@ -1,5 +1,5 @@
 import { getBlogs } from "@/core/functions";
-import { formatDate } from "@/core/functions/formatDate";
+import { getDay, getMonthAndYear } from "@/core/functions/dateFormatter";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -10,21 +10,26 @@ export default function Blogs() {
   }
 
   return (
-    <section className="w-full flex flex-col gap-y-8">
-      <h1 className="title font-semibold text-3xl tracking-tighter">Blogs</h1>
-      <div className="flex gap-x-4">
-        <div className="flex flex-col font-light gap-y-4 text-base md:text-lg lg:text-xl">
-          {blogs.map((blog, i) => (
-            <p key={i}>{formatDate(blog.metadata.publishedAt)}</p>
-          ))}
-        </div>
-        <div className="flex flex-col gap-y-4 md:text-lg lg:text-xl">
-          {blogs.map((blog, i) => (
-            <Link key={i} href={`/blogs/${blog.slug}`}>
+    <section>
+      <h1 className="text-2xl py-4">Blogs</h1>
+      <div>
+        {blogs.map((blog) => (
+          <Link
+            key={blog.slug}
+            href={`/blogs/${blog.slug}`}
+            className="grid grid-cols-3 lg:grid-cols-5 p-4 gap-8 lg:gap-x-16 w-full hover:bg-slate-50 hover:rounded-lg hover:cursor-pointer hover:text-black"
+          >
+            <div className="flex flex-col items-center">
+              <p className="text-xl">{getDay(blog.metadata.publishedAt)}</p>
+              <p className="font-light whitespace-nowrap">
+                {getMonthAndYear(blog.metadata.publishedAt)}
+              </p>
+            </div>
+            <p className="text-xl col-span-2 lg:col-span-4">
               {blog.metadata.title}
-            </Link>
-          ))}
-        </div>
+            </p>
+          </Link>
+        ))}
       </div>
     </section>
   );

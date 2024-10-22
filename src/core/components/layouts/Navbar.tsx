@@ -1,77 +1,65 @@
 import Link from "next/link";
-// import ThemeSwitcher from "./ThemeSwitcher";
 import WebRing from "./WebRing";
+// import { ThemeToggle } from "./ThemeToggle";
+import { Button } from "@/core/components/ui/Button";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
+  DropdownMenuItem,
+} from "@/core/components/ui/DropdownMenu";
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
 export default function Navbar() {
   return (
-    <div className="navbar bg-base-100 h-16 w-full">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/blogs">Blogs</Link>
-            </li>
-            <li>
-              <Link href="/gists">Gists</Link>
-            </li>
-            <li>
-              <Link href="/projects">Projects</Link>
-            </li>
-            {/* <li>
-              <Link href="/contact">Contact</Link>
-            </li> */}
-          </ul>
+    <div className="px-4 md:px-0 self-center grid grid-cols-2 lg:grid-cols-3 w-full h-16 items-center">
+      {/* Logo */}
+      <div className="flex gap-x-2">
+        <div className="lg:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <HamburgerMenuIcon />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>
+                <Link href="/">Home</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/blogs">Blogs</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/gists">Gists</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/projects">Projects</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
-        <Link className="text-xl" href="/">
-          sujamess
-        </Link>
+
+        <div>sujamess</div>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/blogs">Blogs</Link>
-          </li>
-          <li>
-            <Link href="/gists">Gists</Link>
-          </li>
-          <li>
-            <Link href="/projects">Projects</Link>
-          </li>
-          {/* <li>
-            <Link href="/contact">Contact</Link>
-          </li> */}
-        </ul>
+      {/* Menus */}
+      <div className="hidden lg:flex lg:space-x-4">
+        <Button variant="ghost" asChild>
+          <Link href="/">Home</Link>
+        </Button>
+        <Button variant="ghost" asChild>
+          <Link href="/blogs">Blogs</Link>
+        </Button>
+        <Button variant="ghost" asChild>
+          <Link href="/gists">Gists</Link>
+        </Button>
+        <Button variant="ghost" asChild>
+          <Link href="/projects">Projects</Link>
+        </Button>
       </div>
-      <div className="navbar-end">
-        <div className="flex gap-x-4">
-          {/* <ThemeSwitcher /> */}
-          <WebRing />
-        </div>
+      {/* End */}
+      <div className="flex space-x-4 justify-end items-center">
+        {/* <ThemeToggle /> */}
+        <WebRing />
       </div>
     </div>
   );
