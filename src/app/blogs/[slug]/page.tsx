@@ -1,6 +1,7 @@
 import { BASE_URL } from "@/app/sitemap";
+import { Badge } from "@/core/components/ui/Badge";
 import { getBlogs } from "@/core/functions";
-import { formatDate } from "@/core/functions/formatDate";
+import { formatDate } from "@/core/functions/dateFormatter";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
@@ -75,10 +76,15 @@ export default function Blog({
       <h1 className="title font-semibold text-3xl tracking-tighter">
         {blog.metadata.title}
       </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
+      <div className="flex flex-col gap-y-2 justify-between mt-2 mb-8 text-sm">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(blog.metadata.publishedAt)}
         </p>
+        <div className="flex gap-x-1">
+          {blog.tags.map((tag) => (
+            <Badge key={tag}>{tag}</Badge>
+          ))}
+        </div>
       </div>
       <article className="prose prose-base md:prose-lg prose-headings:mt-8 prose-headings:font-semibold prose-h1:text-3xl prose-h2:text-2xl dark:prose-p:text-red-400 max-w-none">
         <MDX source={blog.content} />

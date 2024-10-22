@@ -1,17 +1,9 @@
 "use client";
-import { useAtom } from "jotai/react";
-import { Theme } from "react-daisyui";
-import { themeAtom } from "@/core/stores";
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme] = useAtom(themeAtom);
+import * as React from "react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { type ThemeProviderProps } from "next-themes/dist/types";
 
-  return (
-    <Theme
-      dataTheme={theme}
-      className="w-full min-h-screen flex justify-center"
-    >
-      {children}
-    </Theme>
-  );
+export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }

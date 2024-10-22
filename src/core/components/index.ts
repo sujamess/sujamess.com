@@ -1,3 +1,3 @@
 export * from "./TypewriterEffect";
-export * from "./MDX/index";
+export * from "./MDX";
 export * from "./Icon";
