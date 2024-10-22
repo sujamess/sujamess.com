@@ -1,3 +1,4 @@
+import { Separator } from "@/core/components/ui/Separator";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
@@ -72,20 +73,18 @@ export default function Projects() {
   };
   return (
     <section className="w-full flex flex-col gap-y-8">
-      <h1 className="title font-semibold text-3xl tracking-tighter">
-        Projects
-      </h1>
+      <h1 className="text-2xl py-4">Projects</h1>
 
       <div className="flex flex-col gap-y-4">
-        <h2 className="font-semibold text-2xl tracking-tighter">Active</h2>
+        <h2 className="text-xl">Active</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {projects.active.map((activeProject, i) => (
+          {projects.active.map((activeProject) => (
             <div
-              className="card card-compact card-bordered max-w-80 bg-base-100"
-              key={i}
+              className="p-4 border-2 rounded-lg lg:max-w-80"
+              key={activeProject.title.org + "/" + activeProject.title.repo}
             >
-              <div className="card-body">
-                <p className="card-title">
+              <div className="flex flex-col">
+                <div className="flex gap-x-2">
                   <span className="align-text-top h-full">
                     {activeProject.title.org}
                   </span>
@@ -93,9 +92,10 @@ export default function Projects() {
                   <span className="font-light break-normal h-full align-text-top">
                     {activeProject.title.repo}
                   </span>
-                </p>
-                <p>{activeProject.description}</p>
-                <div className="card-actions justify-end mt-4">
+                </div>
+                <Separator className="my-4" />
+                <p className="font-extralight">{activeProject.description}</p>
+                <div className="justify-end mt-4">
                   <div className="flex gap-x-2">
                     {activeProject.sourceURL && (
                       <Link href={activeProject.sourceURL}>
@@ -114,25 +114,26 @@ export default function Projects() {
       </div>
 
       <div className="flex flex-col gap-y-4">
-        <h2 className="font-semibold text-2xl tracking-tighter">Archived</h2>
+        <h2 className="text-xl">Archived</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {projects.archived.map((archivedProject, i) => (
+          {projects.archived.map((archivedProject) => (
             <div
-              className="card card-compact card-bordered max-w-80 bg-base-100"
-              key={i}
+              className="p-4 border-2 rounded-lg lg:max-w-80"
+              key={archivedProject.title.org + "/" + archivedProject.title.repo}
             >
-              <div className="card-body">
-                <p className="card-title">
+              <div className="flex flex-col">
+                <div className="flex gap-x-2">
                   <span className="align-text-top h-full">
                     {archivedProject.title.org}
                   </span>
                   <span className="align-text-top h-full">/</span>
-                  <span className="font-light break-normal align-text-top h-full">
+                  <span className="font-light break-normal h-full align-text-top">
                     {archivedProject.title.repo}
                   </span>
-                </p>
-                <p>{archivedProject.description}</p>
-                <div className="card-actions justify-end">
+                </div>
+                <Separator className="my-4" />
+                <p className="font-extralight">{archivedProject.description}</p>
+                <div className="justify-end mt-4">
                   <div className="flex gap-x-2">
                     {archivedProject.sourceURL && (
                       <Link href={archivedProject.sourceURL}>
