@@ -10,10 +10,10 @@ tags: Distributed System
 Just for learning purposes, just curious how to do that, and if I'm still learning, why don't I just share with others who might not know this as well? (But the truth is, I just wanted to build something in Go 😛)
 
 ## It Started with a Cron Job
-I've built many hobby projects—one of those, I think many of you might have done this before, the web scraper or fetcher or whatever you want to call it. I just wanted to do a simple task: fetch a URL every day at 3 A.M.
+I've built many hobby projects—one of those, I think, many of you might have done this before, the web scraper or fetcher or whatever you want to call it. I just wanted to do a simple task: fetch a URL every day at 3 A.M.
 
 You might say:
-- Use a cloud solution! — Then the pricing is main concern if we run millions of jobs on the cloud.
+- Use a cloud solution! — Then the pricing is the main concern if we run millions of jobs on the cloud.
 - That's easy — just run a cron with `0 3 * * *`, done! — Yes, the easiest way to solve that is to run the cron. It works like a charm, smooth as silk.
 
 But what if you need other jobs that run at different times?
@@ -27,7 +27,7 @@ Then, at some point, things start going wrong:
 - **Worst of all — I didn't even notice.**
 
 ## The Limitations of Cron Jobs
-As the system grows, we notice crons have limitations:
+As the system grows, we notice that cron has limitations:
 - No monitoring.
 - No retry if failed.
 - No logs — unless you add them manually.
@@ -38,11 +38,11 @@ As the system grows, we notice crons have limitations:
 ## Why Go Distributed?
 So I thought—can I just build a better scheduler?
 
-But once your system scales, you might got:
-- One machine isn’t enough
-- You need fault tolerance — if one server goes down, jobs still need to run
-- Different jobs require different resources — CPU-heavy vs memory-heavy
-- Some jobs need to run closer to the data (geographic requirements)
+But once your system scales, you might get:
+- One machine isn’t enough.
+- You need fault tolerance — jobs still need to run if one server goes down.
+- Different jobs require different resources — CPU-heavy vs memory-heavy.
+- Some jobs need to run closer to the data (geographic requirements).
 
 A single-server scheduler works… until suddenly, it doesn’t.
 Then you're back to having a single point of failure.
