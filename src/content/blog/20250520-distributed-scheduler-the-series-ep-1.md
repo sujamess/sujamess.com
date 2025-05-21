@@ -6,7 +6,7 @@ heroImage: '/distributed-scheduler-the-series/ep1/placeholder.jpg'
 tags: Distributed System
 ---
 
-In [Episode 0](https://sujamess.com/blog/20250519-distributed-scheduler-the-series-ep-0), we discussed why using just cron doesn't work. We saw many problems with that approach—No retry logic, no logging, and as the system grows, we start seeing jobs silently fail and no way to tell why. So, like most engineers—I tried to solve the problem in the simplest way possible. Our first attempt was...
+In [Episode 0](https://sujamess.com/blogs/20250519-distributed-scheduler-the-series-ep-0/), we discussed why using just cron doesn't work. We saw many problems with that approach—No retry logic, no logging, and as the system grows, we start seeing jobs silently fail and no way to tell why. So, like most engineers—I tried to solve the problem in the simplest way possible. Our first attempt was...
 
 ## Add More Workers
 If one worker isn't enough, why don't we just add more workers?
