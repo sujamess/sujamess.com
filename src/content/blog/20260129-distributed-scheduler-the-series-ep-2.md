@@ -107,7 +107,7 @@ func (lm *LeaseManager) AcquireOrRenew(ctx context.Context) (bool, time.Time, er
         ON CONFLICT (resource_id) DO UPDATE
         SET holder_id = $1, expires_at = NOW() + INTERVAL '5 seconds'
         WHERE holder_id = $1 OR leases.expires_at < NOW()
-        RETURNING expires_at;  -- Add this to get the expiry time
+        RETURNING expires_at;
     `
     
     var expiryTime time.Time
