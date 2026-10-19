@@ -1,12 +1,12 @@
 ---
-title: '[Eng] Distributed Scheduler The Series: Episode 2 — Only One Leader'
-description: 'Join me on this journey to build a distributed scheduler from scratch, exploring how we can solve the limitations of simple cron jobs and create a robust, scalable job orchestration system.'
+title: '[Eng] Distributed Scheduler The Series: Episode 2 - Only One Leader'
+description: 'Why simple cron jobs break down as systems grow, and how to build a scalable distributed scheduler from scratch.'
 pubDate: 'Jan 29 2026'
 heroImage: '/distributed-scheduler-the-series/ep2/placeholder.jpg'
 tags: Distributed System
 ---
 
-In [Episode 1](https://sujamess.com/blogs/20250519-distributed-scheduler-the-series-ep-1/), we tried to scale our orchestrator to remove the single point of failure, but we ended up creating the same problems:
+In [Episode 1](https://sujamess.com/blogs/20250520-distributed-scheduler-the-series-ep-1/), we tried to scale our orchestrator to remove the single point of failure, but we ended up creating the same problems:
  - If we have multiple orchestrators running at the same time, they all try to fetch and schedule the same jobs.
  - We get race conditions.
  - We get duplicated job executions.
@@ -120,7 +120,7 @@ func (lm *LeaseManager) AcquireOrRenew(ctx context.Context) (bool, time.Time, er
 }
 ```
 
-And we could loop inside go-routine to acquire or renew the the lease.
+And we could loop inside go-routine to acquire or renew the lease.
 ```go
 type LeaderState struct {
     mu          sync.RWMutex
@@ -183,7 +183,7 @@ func main() {
         }
     }
 }
-````
+```
 
 ## We are back to the same problems
 We built the leader election with a high availability, so we can survive orchestrator failures.
