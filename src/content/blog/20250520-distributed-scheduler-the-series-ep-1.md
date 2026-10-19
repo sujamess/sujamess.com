@@ -1,7 +1,7 @@
 ---
 title: '[Eng] Distributed Scheduler The Series: Episode 1 - The Naive Orchestrator'
 description: 'Why simple cron jobs break down as systems grow, and how to build a scalable distributed scheduler from scratch.'
-pubDate: 'May 20 2025'
+pubDate: '2025-05-20'
 heroImage: '/distributed-scheduler-the-series/ep1/placeholder.jpg'
 tags: Distributed System
 ---

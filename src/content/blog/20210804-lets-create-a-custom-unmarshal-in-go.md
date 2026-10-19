@@ -1,7 +1,7 @@
 ---
 title: 'ทำ Custom Unmarshal ใน Go กันเถอะ!'
 description: 'พาทำ Custom Unmarshal ใน Go'
-pubDate: 'Aug 4 2021'
+pubDate: '2021-08-04'
 heroImage: '/20210804-lets-create-a-custom-unmarshal-in-go/placeholder.png'
 tags: Go
 ---
