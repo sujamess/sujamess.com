@@ -1,0 +1,8 @@
+overrides:
+  fast-xml-parser: ^5.3.5
+  devalue: ^5.9.3
+  tar: ^7.5.19
+
+allowBuilds:
+  esbuild: true
+  sharp: true
