@@ -1,7 +1,7 @@
 ---
 title: '[Eng] Distributed Scheduler The Series: Episode 0 - From Zero to Orchestrator'
 description: 'Why simple cron jobs break down as systems grow, and how to build a scalable distributed scheduler from scratch.'
-pubDate: 'May 19 2025'
+pubDate: '2025-05-19'
 heroImage: '/distributed-scheduler-the-series/ep0/placeholder.jpg'
 tags: Distributed System
 ---

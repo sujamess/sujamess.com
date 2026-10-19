@@ -1,7 +1,7 @@
 ---
 title: '[Eng] Distributed Scheduler The Series: Episode 2 - Only One Leader'
 description: 'Why simple cron jobs break down as systems grow, and how to build a scalable distributed scheduler from scratch.'
-pubDate: 'Jan 29 2026'
+pubDate: '2026-01-29'
 heroImage: '/distributed-scheduler-the-series/ep2/placeholder.jpg'
 tags: Distributed System
 ---

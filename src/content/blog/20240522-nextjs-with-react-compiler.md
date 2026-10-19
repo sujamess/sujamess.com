@@ -1,7 +1,7 @@
 ---
 title: 'ใช้ React Compiler คู่กับ Next.js กัน'
 description: 'ลองใช้ React Compiler บน Next.js ว่าจะเร็วขึ้น/ดีขึ้นไหม'
-pubDate: 'May 22 2024'
+pubDate: '2024-05-22'
 heroImage: '/20240522-nextjs-with-react-compiler/placeholder.jpg'
 tags: Next.js, React
 ---
